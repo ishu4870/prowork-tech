@@ -36,7 +36,6 @@ export default function Demo() {
           <div className="demo-box">
             <p className="demo-title">Project Preview</p>
             <p className="demo-sub">
-              Replace this box with image/video in production.
             </p>
             <div className="demo-placeholder">Image / Video Area</div>
           </div>

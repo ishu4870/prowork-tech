@@ -7,21 +7,43 @@ export default function Contact() {
     phone: "",
     message: "",
   });
+
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function onChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
+    setLoading(true);
+    setStatus("");
 
-    console.log("📩 Contact Form Submission:", form);
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-    setStatus("✅ Submitted Successfully! We'll contact you soon.");
-    setForm({ name: "", email: "", phone: "", message: "" });
+      const data = await res.json();
 
-    setTimeout(() => setStatus(""), 4000);
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setStatus("✅ Submitted Successfully! We'll contact you soon.");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      setStatus("❌ Failed to submit. Please try again.");
+    } finally {
+      setLoading(false);
+      setTimeout(() => setStatus(""), 4000);
+    }
   }
 
   return (
@@ -92,8 +114,12 @@ export default function Contact() {
             />
           </div>
 
-          <button className="btn btn-primary full" type="submit">
-            Submit
+          <button
+            className="btn btn-primary full"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Sending..." : "Submit"}
           </button>
 
           {status && <p className="status">{status}</p>}
