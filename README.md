@@ -1,6 +1,8 @@
 # Prowork Tech Home 🚀
 
 A modern, high-performance web application landing page built with **React 18** and **Vite**. This project serves as the digital storefront for **Prowork Tech**, focusing on speed, scalability, and a modular development workflow.
+### 🚀 Live Demo
+**View the live project here:** https://prowork-tech-demo.netlify.app/
 
 ## 🛠️ Tech Stack
 
@@ -8,6 +10,10 @@ A modern, high-performance web application landing page built with **React 18** 
 * **Build Tool:** Vite 7.3.1 (Next Generation Frontend Tooling)
 * **Plugin:** @vitejs/plugin-react
 * **Language:** JavaScript (ESM)
+* **Deployment:** Netlify (Continuous Deployment via GitHub)
+* **Build Tooling:** Optimized with `npx` for secure binary execution in CI/CD environments
+* **Environment:** Node.js v22+
+
 
 ## 📁 Project Structure
 
@@ -69,6 +75,7 @@ export default defineConfig({
 ---
 
 ### 👤 About the Author
-I am a **Final Year B.Tech Computer Science student** passionate about building scalable web solutions and technical innovation.
+* **Role:** Final Year B.Tech Computer Science Student
+* **Focus:** Frontend Development & Technical Problem Solving
 ---
 *Developed for Prowork Tech.*
